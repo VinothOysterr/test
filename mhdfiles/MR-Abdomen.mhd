@@ -1,0 +1,14 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = True
+CompressedDataSize = 19706767
+TransformMatrix = 1 0 0 0 0 -1 0 1 0
+Offset = -141.755 -55.2869 134.007
+CenterOfRotation = 0 0 0
+AnatomicalOrientation = RSA
+ElementSpacing = 1.03125 1.03125 1
+DimSize = 320 320 160
+ElementType = MET_USHORT
+ElementDataFile = MR-Abdomen.zraw

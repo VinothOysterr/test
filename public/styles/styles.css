@@ -1,0 +1,55 @@
+table {
+    border-collapse: separate;
+    border-spacing: 100px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.712);
+    background-color: rgb(244, 255, 255);
+    border: 1px solid #ccc;
+    transform: translateZ(50px);
+}
+td {
+    padding: 50px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0);
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.712);
+}
+.cell {
+    border-radius: 10px;
+    border: 5px solid transparent;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.712);
+    transform: translateZ(150px);
+}
+.cell:hover {
+    background-position: right center;
+}
+.green {
+    background-color: rgb(0, 230, 77);
+}
+.red {
+    background-color: rgb(255, 47, 47);
+}
+
+.cell-text {
+    position: absolute;
+    bottom: -30px; /* Adjust the distance from the cell bottom */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(183, 49, 236);
+}
+
+
+.cel {
+    position: relative;
+    width: 300px;
+    height: 400px;
+}

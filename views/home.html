@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Data Table</title>
+
+    <link rel="stylesheet" type="text/css" href="/styles/styles.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="/styles/home.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="first">
+            <table>
+                <tr>
+                    
+                    <td class="cell <%= data.T_1 == 1 ? 'green' : 'red' %>" data-t1="<%= data.T_1 %>"><%= data.T_1 %><span class="cell-text">Table 1</span></td>
+            
+                    <td class="cell <%= data.T_2 == 1 ? 'green' : 'red' %>" data-t2="<%= data.T_2 %>"><%= data.T_2 %><span class="cell-text">Table 2</span></td>
+        
+            
+                    <td class="cell <%= data.T_3 == 1 ? 'green' : 'red' %>" data-t3="<%= data.T_3 %>"><%= data.T_3 %><span class="cell-text">Table 3</span></td>
+                </tr>
+                <tr>
+            
+                    <td class="cell <%= data.T_4 == 1 ? 'green' : 'red' %>" data-t4="<%= data.T_4 %>"><%= data.T_4 %><span class="cell-text">Table 4</span></td>
+        
+            
+                    <td class="cell <%= data.T_5 == 1 ? 'green' : 'red' %>" data-t5="<%= data.T_5 %>"><%= data.T_5 %><span class="cell-text">Table 5</span></td>
+        
+            
+                    <td class="cell <%= data.T_6 == 1 ? 'green' : 'red' %>" data-t6="<%= data.T_6 %>"><%= data.T_6 %><span class="cell-text">Table 6</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
