@@ -130,7 +130,7 @@ app.get('/home', async (req, res) => {
 	 // const response = await axios.get('http://52.41.36.82/post');
       const data = response.data;
   
-      res.render('home', { data: data });
+      res.render('home.html', { data: data });
   
     } catch (error) {
       console.error(error);
