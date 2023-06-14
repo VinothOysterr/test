@@ -23,9 +23,11 @@ function checkDataChange() {
 
         if (newData.T_1 === 1) {
             showNotification("Table 1 Service needed");
+
             playSound("order.wav");
         } else if (currentData.T_1 === 1 && newData.T_1 === 0) {
             showComplete("Table 1 Service completed");
+            
             playSound("audio/complete.wav");
         }
 
