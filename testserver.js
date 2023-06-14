@@ -8,7 +8,8 @@ var PORT = 8000;
 ////
 const axios = require('axios');
 const path = require('path');
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
+app.engine('html', require('ejs').renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 ////
