@@ -3,12 +3,12 @@ var bodyParser = require('body-parser');
 
 var app = express();
 var PORT = 8000;
+// const PORT = process.env.PORT || 8000;
 
 ////
 const axios = require('axios');
 const path = require('path');
-app.set('view engine', 'html');
-app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 ////
@@ -108,28 +108,29 @@ app.post("/T6",(req,res)=>{
 })
 app.get("/T6",(req,res)=>{
    
-    res.send(JSON.stringify(reqData));
-   // res.json(reqData)
-    console.log(reqData)
+    // res.send(JSON.stringify(reqData));
+    const reqData = {
+		"T_1": 0,
+		"T_2": 1,
+		"T_3": 0,
+		"T_4": 1,
+		"T_5": 0,
+		"T_6": 1,
+		}
+    res.json(reqData)
+    // console.log(reqData)
 })
 
 // Start
 
 app.get('/home', async (req, res) => {
     try {
-      // const response = await axios.get('http://127.0.0.1:5000/post');
-      // const data = response.data;
-
-      const data = {
-        "T_1": 1,
-        "T_2": 0,
-        "T_3": 1,
-        "T_4": 0,
-        "T_5": 1,
-        "T_6": 0,
-    }
+      const response = await axios.get('http://3.7.221.183:8000/t6');
+	 // const response = await axios.get('https://f7bd-2401-4900-1f2b-5fa1-7566-1e10-d9f-bc01.in.ngrok.io/post');
+	 // const response = await axios.get('http://52.41.36.82/post');
+      const data = response.data;
   
-      res.render('home.html', { data: data });
+      res.render('home', { data: data });
   
     } catch (error) {
       console.error(error);
