@@ -1,6 +1,8 @@
 var express = require("express");
 var bodyParser = require('body-parser');
 
+const os = require('os');
+
 var app = express();
 var PORT = 8000;
 // const PORT = process.env.PORT || 8000;
@@ -139,6 +141,30 @@ app.get('/home', async (req, res) => {
       res.status(500).json({ error: 'Error retrieving data' });
     }
 });
+
+const ipAddress = getIPAddress();
+
+app.get (`/${ipAddress}/data`, (req, res) => {
+	res.send(JSON.stringify(reqData));
+    console.log(reqData)
+});
+
+app.get (`/${ipAddress}/data`, (req, res) => {
+	reqData = req.body;
+    console.log(reqData)
+});
+
+function getIPAddress() {
+    const interfaces = os.networkInterfaces();
+    for (const iface in interfaces) {
+      for (const alias of interfaces[iface]) {
+        if (alias.family === 'IPv4' && !alias.internal) {
+          return alias.address;
+        }
+      }
+    }
+    return 'Unknown';
+}
 
 // End
 
