@@ -126,7 +126,7 @@ app.get("/T6",(req,res)=>{
 
 app.get('/home', async (req, res) => {
     try {
-      const response = await axios.get('http://3.7.221.183:8000/t6');
+      const response = await axios.get('http://3.7.221.183:8000/t5');
 	 // const response = await axios.get('https://f7bd-2401-4900-1f2b-5fa1-7566-1e10-d9f-bc01.in.ngrok.io/post');
 	 // const response = await axios.get('http://52.41.36.82/post');
       const data = response.data;
