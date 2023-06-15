@@ -49,7 +49,8 @@ app.get("/T1",(req,res)=>{
     else(compare == "0")
     {
      //  res.send(JSON.stringify({"State": "OFF"}))
-       res.json({"State": "OFF"})
+       res.json({"State": "OFF",
+	       "ip": ipAddress})
 
     }
    // console.log(reqData)
