@@ -19,6 +19,11 @@ app.use(express.static('public'));
 let reqData;
 let compare;
 
+////
+let reqData4;
+let reqData5;
+////
+
 app.use(express.json())
 
 app.set("Title","Welcome to My Application")
@@ -87,23 +92,23 @@ app.get("/T3",(req,res)=>{
 })
 app.post("/T4",(req,res)=>{
     
-    reqData = req.body;
-    console.log(reqData)
+    reqData4 = req.body;
+    console.log(reqData4)
 })
 app.get("/T4",(req,res)=>{
     
-    res.send(JSON.stringify(reqData));
-    console.log(reqData)
+    res.send(JSON.stringify(reqData4));
+    console.log(reqData4)
 })
 app.post("/T5",(req,res)=>{
    
-    reqData = req.body;
-    console.log(reqData)
+    reqData5 = req.body;
+    console.log(reqData5)
 })
 app.get("/T5",(req,res)=>{
   
-   res.send(JSON.stringify(reqData));
-   console.log(reqData)
+   res.send(JSON.stringify(reqData5));
+   console.log(reqData5)
 })
 app.post("/T6",(req,res)=>{
     
