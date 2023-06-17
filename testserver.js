@@ -20,6 +20,7 @@ let reqData;
 let compare;
 
 ////
+let reqData3;
 let reqData4;
 let reqData5;
 ////
@@ -86,8 +87,9 @@ app.post("/T3",(req,res)=>{
   
 })
 app.get("/T3",(req,res)=>{
-    res.send(JSON.stringify(reqData));
-    console.log(reqData)
+    reqData3 = await axios.get('http://localhost:5000/post');
+    const data = reqData3.data;
+    res.send(data);
     
 })
 app.post("/T4",(req,res)=>{
