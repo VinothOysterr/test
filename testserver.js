@@ -87,7 +87,7 @@ app.post("/T3",(req,res)=>{
   
 })
 app.get("/T3", async (req,res)=>{
-    reqData3 = await axios.get('http://localhost:5000/post');
+    reqData3 = await axios.get('http://192.168.1.18:5000/post');
     const data = reqData3.data;
     res.send(data);
     
