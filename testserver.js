@@ -160,7 +160,8 @@ app.get('/t5/:name', async (req, res) => {
     const data = await DataModel.findOne({ name });
 
     if (data) {
-      res.status(200).json(data.tabledata);
+      //res.status(200).json(data.tabledata);
+		res.render('home.html', { data: data });
     } else {
       res.status(404).json({ error: 'Data not found' });
     }
