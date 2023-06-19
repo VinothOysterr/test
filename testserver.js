@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const os = require('os');
 
@@ -8,12 +9,33 @@ var PORT = 8000;
 // const PORT = process.env.PORT || 8000;
 
 ////
+const mongoose = require('mongoose');
+app.use(bodyParser.json());
+
 const axios = require('axios');
 const path = require('path');
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
+
+// Connect to MongoDB Atlas (replace <YOUR_CONNECTION_STRING> with your actual connection string)
+mongoose.connect("mongodb+srv://DBPro:Oysterr_246@tabledata.mj8zb3d.mongodb.net/?retryWrites=true&w=majority", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Create a database schema
+const dataSchema = new mongoose.Schema({
+  name: String,
+  tabledata: {
+    type: mongoose.Schema.Types.Mixed,
+    required: true,
+  },
+}, {versionKey: false});
+
+// Create a model based on the schema
+const DataModel = mongoose.model('Data', dataSchema);
 ////
 
 let reqData;
@@ -102,16 +124,53 @@ app.get("/T4",(req,res)=>{
     res.send(JSON.stringify(reqData4));
     console.log(reqData4)
 })
-app.post("/T5",(req,res)=>{
-   
-    reqData5 = req.body;
-    console.log(reqData5)
-})
-app.get("/T5",(req,res)=>{
-  
-   res.send(JSON.stringify(reqData5));
-   console.log(reqData5)
-})
+
+////////////////////////////
+// Define a route to save JSON data
+app.post('/t5', async (req, res) => {
+  try {
+    const { name, tabledata } = req.body;
+
+    // Find the existing data based on the name field
+    const existingData = await DataModel.findOne({ name });
+
+    if (existingData) {
+      // Update the existing data
+      existingData.tabledata = tabledata;
+      await existingData.save();
+      res.status(200).json({ message: 'Data updated successfully' });
+    } else {
+      // Create a new instance of the DataModel with the JSON data
+      const newData = new DataModel({ name, tabledata });
+
+      // Save the new data to the database
+      await newData.save();
+      res.status(201).json({ message: 'Data saved successfully' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while saving the data' });
+  }
+});
+
+// Define a route to retrieve a specific tabledata by name
+app.get('/t5/:name', async (req, res) => {
+  try {
+    const name = req.params.name;
+
+    // Find the data based on the name
+    const data = await DataModel.findOne({ name });
+
+    if (data) {
+      res.status(200).json(data.tabledata);
+    } else {
+      res.status(404).json({ error: 'Data not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while retrieving the data' });
+  }
+});
+////////////////////////////
+
 app.post("/T6",(req,res)=>{
     
     reqData = req.body;
