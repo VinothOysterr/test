@@ -9,7 +9,6 @@ var PORT = 8000;
 // const PORT = process.env.PORT || 8000;
 
 ////
-const mongoose = require('mongoose');
 app.use(bodyParser.json());
 
 const axios = require('axios');
