@@ -161,7 +161,7 @@ app.get('/t5/:name', async (req, res) => {
 
     if (data) {
       //res.status(200).json(data.tabledata);
-		res.render('home.html', { data: data });
+		res.render('home.html', { data: data.tabledata });
     } else {
       res.status(404).json({ error: 'Data not found' });
     }
