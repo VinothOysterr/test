@@ -152,7 +152,7 @@ app.post('/t5', async (req, res) => {
 });
 
 // Define a route to retrieve a specific tabledata by name
-app.get('/t5/:name', async (req, res) => {
+app.get('/:name', async (req, res) => {
   try {
     const name = req.params.name;
 
